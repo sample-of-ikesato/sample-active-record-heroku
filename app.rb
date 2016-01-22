@@ -12,8 +12,7 @@ require 'open-uri'
 require 'uri'
 require 'json'
 
-Time.zone = "Asia/Tokyo"
-
+started_at = Time.now
 ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
 class Counter < ActiveRecord::Base; end
 counter = Counter.first
@@ -25,10 +24,10 @@ def exit?
   sleep_time = [{start: "23:50", stop: "24:00"},
                 {start: "00:00", stop: "06:30"}]
   Time.zone = "Asia/Tokyo"
-  now = Time.zone.now
+  now = Time.now
   sleep_time.each do |sl|
-    t1 = Time.zone.parse(sl[:start])
-    t2 = Time.zone.parse(sl[:stop])
+    t1 = Time.parse(sl[:start])
+    t2 = Time.parse(sl[:stop])
     if t1 <= now && now < t2
       return true
     end

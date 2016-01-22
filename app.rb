@@ -54,5 +54,5 @@ end
 
 # For debug
 get '/debug' do
-  {counter: counter.counter, updated_at: counter.updated_at, stated_at: stated_at}.to_json.to_s
+  {counter: counter.counter, updated_at: counter.updated_at, stated_at: started_at}.to_json.to_s
 end
